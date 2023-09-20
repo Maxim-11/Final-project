@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Общие стили для формы */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        label {
+            width: 100px; /* Ширина метки */
+        }
+
+        /* Стили для полей ввода */
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        /* Стили для кнопки */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Стили для сообщений об ошибках */
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>New Product</h2>
+    <div>
+        <div>
+            <form action="#" th:action="@{/addproduct}" th:object="${product}" method="post">
+                <div class="row">
+                    <div>
+                        <label for="productName">Name</label>
+                        <input type="text" th:field="*{productName}" id="productName" placeholder="Name">
+                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label for="price" class="col-form-label">Price</label>
+                        <input type="text" th:field="*{price}" id="price" placeholder="Price">
+                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label for="description" class="col-form-label">Description</label>
+                        <input type="text" th:field="*{description}" id="description" placeholder="Description">
+                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select name="name">
+                            <div th:each="product : ${categories}">
+                                <option th:text="${product.name}"></option>
+                            </div>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Address</label>
+                        <select name="street">
+                            <div th:each="product : ${addresses}">
+                                <option th:text="${product.street}"></option>
+                            </div>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Supplier</label>
+                        <select name="sname">
+                            <div th:each="product : ${suppliers}">
+                                <option th:text="${product.sname}"></option>
+                            </div>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <input type="submit" value="Add Product">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-edit:hover {
+            background-color: #ffca2b;
+            border-color: #ffca2b;
+            color: #212529;
+        }
+
+        .btn-back {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-back:hover {
+            background-color: #138496;
+            border-color: #138496;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="'User: ' + ${user_object.username}"></h1>
+    <div class="container">
+        <h2 th:text="'Roles: ' + ${user_object.roles}"></h2>
+        <p th:text="${user_object.active} == true ? 'User: Active' : 'User: Inactive'"></p>
+    </div>
+    <a th:href="'/admin/' + ${user_object.id} + '/update'" class="btn btn-edit mr-2">Edit</a>
+    <a href="/admin/index" class="btn btn-back">Back</a>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

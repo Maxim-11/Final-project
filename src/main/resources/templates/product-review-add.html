@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление отзыва продукту</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Добавление отзыва продукту</h2>
+    <form th:action="${'/product/review/add'}" method="post">
+        <div class="form-group">
+            <select name="product" class="form-control">
+                <div th:each="element : ${products}">
+                    <option th:value="${element.id}" th:text="${element.productName}"></option>
+                </div>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="review" class="form-control">
+                <div th:each="element : ${reviews}">
+                    <option th:value="${element.id}" th:text="${element.number}"></option>
+                </div>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить отзыв продукту</button>
+    </form>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

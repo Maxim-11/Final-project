@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .menu-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-links li {
+            margin-bottom: 10px;
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-links a:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+        }
+
+        .logout-button button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .logout-button button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <ul class="menu-links">
+        <li><a href="/admin/index">Roles</a></li>
+        <li><a href="/address">Addresses</a></li>
+        <li><a href="/category">Categories</a></li>
+        <li><a href="/product">Products</a></li>
+        <li><a href="/review">Reviews</a></li>
+        <li><a href="/rating">Ratings</a></li>
+        <li><a href="/supplier">Suppliers</a></li>
+    </ul>
+    <div class="logout-button">
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

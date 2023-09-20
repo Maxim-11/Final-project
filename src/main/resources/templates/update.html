@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update User</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+<div class="container mt-5">
+    <form method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" th:value="${user_object.username}" name="username" id="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>User Roles</label>
+            <div th:each="role : ${roles}" class="form-check">
+                <input type="checkbox" th:id="${role}" th:name="${'roles[]'}" th:value="${role}" th:checked="${#lists.contains(user_object.roles, role)}" class="form-check-input">
+                <label th:for="${role}" class="form-check-label" th:text="${role}"></label>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit">Update User</button>
+        <a class="btn btn-danger" th:href="'/admin/' + ${user_object.id}">Back</a>
+    </form>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

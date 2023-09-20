@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Addresses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+            <h2 class="my-5">Addresses</h2>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Postal Code</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="address : ${addresses}">
+                    <td th:text="${address.street}"></td>
+                    <td th:text="${address.city}"></td>
+                    <td th:text="${address.country}"></td>
+                    <td th:text="${address.postalCode}"></td>
+                    <td><a class="btn btn-primary" th:href="@{/edit/{id}/address(id=${address.id})}">Edit</a></td>
+                    <td><a class="btn btn-danger" th:href="@{/delete/{id}/address(id=${address.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="my-5"><a class="btn btn-success" href="/new/address">Add Address</a></p>
+        </div>
+    </div>
+</div>
+<form class="container my-3" action="/searchAd" method="GET">
+    <div class="form-group">
+        <input type="text" class="form-control" name="street" placeholder="Enter street">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<div class="container my-3">
+    <p><a class="btn btn-secondary" href="/home">Back</a></p>
+</div>
+</body>
+</html>

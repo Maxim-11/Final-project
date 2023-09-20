@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="my-5">Products</h2>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Address</th>
+                    <th>Supplier</th>
+                    <th>Review</th>
+                    <th>Rating</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.productName}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td>
+                        <ul>
+                            <li th:each="category : ${product.getCategory()}" th:text="${category.getName()}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="address : ${product.getAddress()}" th:text="${address.getPostalCode()}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="supplier : ${product.getSupplier()}" th:text="${supplier.getSname()}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="review : ${product.getReviews()}" th:text="${review.getNumber()}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="rating : ${product.getRating()}" th:text="${rating.getRate()}"></li>
+                        </ul>
+                    </td>
+                    <td><a class="btn btn-primary" th:href="@{/edit/{id}/product(id=${product.id})}">EDIT</a></td>
+                    <td><a class="btn btn-danger" th:href="@{/delete/{id}/product(id=${product.id})}">DELETE</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p class="my-3"><a class="btn btn-success" href="/new/product">Add Products</a></p>
+    <form class="form-inline" action="/searchPr" method="GET">
+        <input class="form-control mr-2" type="text" name="name" placeholder="Enter name">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <center><a class="btn btn-info mt-3" href="/product/review/add">Добавить отзыв</a></center>
+    <center><a class="btn btn-info mt-3" href="/product/rating/add">Добавить рейтинг</a></center>
+</div>
+<p class="my-5"><a class="btn btn-secondary" href="/home">Back</a></p>
+</body>
+</html>

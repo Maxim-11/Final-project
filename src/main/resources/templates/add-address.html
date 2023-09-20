@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Address</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">New Address</h2>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/addaddress}" th:object="${address}" method="post">
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input type="text" th:field="*{street}" class="form-control" id="street" placeholder="Enter Street" required>
+                            <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" th:field="*{city}" class="form-control" id="city" placeholder="Enter City" required>
+                            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" th:field="*{country}" class="form-control" id="country" placeholder="Enter Country" required>
+                            <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">PostalCode</label>
+                            <input type="text" th:field="*{postalCode}" class="form-control" id="postalCode" placeholder="Enter PostalCode" required>
+                            <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add Address</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

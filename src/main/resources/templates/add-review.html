@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Review</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">New Review</h2>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/addreview}" th:object="${review}" method="post">
+                        <div class="form-group">
+                            <label for="number">Number</label>
+                            <input type="text" th:field="*{number}" class="form-control" id="number" placeholder="Enter Number" required>
+                            <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Enter Username" required>
+                            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Text</label>
+                            <input type="text" th:field="*{text}" class="form-control" id="text" placeholder="Enter Text" required>
+                            <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

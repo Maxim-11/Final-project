@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f4f4f4;">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Update Review</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" th:action="@{/update/{id}/review(id=${review.id})}" th:object="${review}">
+                        <div class="form-group">
+                            <label for="number">Number</label>
+                            <input type="text" th:field="*{number}" class="form-control" id="number" placeholder="Enter Number">
+                            <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Enter Username">
+                            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Text</label>
+                            <input type="text" th:field="*{text}" class="form-control" id="text" placeholder="Enter Text">
+                            <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Edit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
